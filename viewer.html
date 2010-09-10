@@ -16,29 +16,32 @@
 
     $(document).ready(function () {
       //Add the img tag.
-      $('#options').prepend('<img id="chart" src="' + urlString + '"/>');
+      var height = $('#chartViewer').height();
+      alert("height is " +height);
+
+      $('#chartViewer').append('<img id="chart" src="' + urlString + '"/>');
 
       //register an event handling function to reset the img src attribute
       //when a new ticker is slected.
       $('#tickers').change( function () {
         var ticker = $('#tickers option:selected').text();
-        urlString = urlString.replace('symb=sprt','symb='+ticker);
-        //alert("changed url to: "+urlString);
-        $('#chart').attr('src', urlString);
+        var newUrlString = urlString.replace('symb=sprt','symb='+ticker);
+        $('#chart').attr('src', newUrlString);
       });
     });
   </script>
 </head>
 
 <body>
-  <div class="chartViewer ">
-    <form id="options">
-      <select id="tickers">
-        <option>SPRT</option>
-        <option>M</option>
-        <option>F</option>
-      </select>
-    </form>
+  <form id="options">
+    <select id="tickers">
+      <option>SPRT</option>
+      <option>M</option>
+      <option>F</option>
+    </select>
+  </form>
+  <div id="chartViewer">
+
   </div>
 
 </body>
