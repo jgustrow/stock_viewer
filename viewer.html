@@ -12,7 +12,13 @@
 
   <script language="JavaScript" type="text/javascript">
     $(document).ready(function () {
-      //$('.chart').corner();
+      $('#tickers').change( function () {
+        urlString = "http://bigcharts.marketwatch.com/charts/big.chart?symb=sprt&ma=6&maval=9&uf=0&lf=2&lf2=4&lf3=0&type=1&size=4&state=8&style=340&time=9&freq=1"
+        var ticker = $('#tickers option:selected').text();
+        urlString = urlString.replace('symb=sprt','symb='+ticker);
+        //alert("changed url to: "+urlString);
+        $('#chart').attr('src', urlString);
+      });
     });
   </script>
 </head>
