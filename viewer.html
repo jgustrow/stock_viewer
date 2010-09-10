@@ -11,9 +11,16 @@
   <script language="JavaScript" type="text/javascript" src="js/jquery.curvycorners.min.js"> </script>
 
   <script language="JavaScript" type="text/javascript">
+
+    var urlString = "http://bigcharts.marketwatch.com/charts/big.chart?symb=sprt&ma=6&maval=9&uf=0&lf=2&lf2=4&lf3=0&type=1&size=4&state=8&style=340&time=9&freq=1"
+
     $(document).ready(function () {
+      //Add the img tag.
+      $('#options').prepend('<img id="chart" src="' + urlString + '"/>');
+
+      //register an event handling function to reset the img src attribute
+      //when a new ticker is slected.
       $('#tickers').change( function () {
-        urlString = "http://bigcharts.marketwatch.com/charts/big.chart?symb=sprt&ma=6&maval=9&uf=0&lf=2&lf2=4&lf3=0&type=1&size=4&state=8&style=340&time=9&freq=1"
         var ticker = $('#tickers option:selected').text();
         urlString = urlString.replace('symb=sprt','symb='+ticker);
         //alert("changed url to: "+urlString);
@@ -24,9 +31,8 @@
 </head>
 
 <body>
-  <div class="roundCorners chartViewer ">
-    <img id="chart" src="http://bigcharts.marketwatch.com/charts/big.chart?symb=sprt&ma=6&maval=9&uf=0&lf=2&lf2=4&lf3=0&type=1&size=4&state=8&style=340&time=9&freq=1"/>
-    <form>
+  <div class="chartViewer ">
+    <form id="options">
       <select id="tickers">
         <option>SPRT</option>
         <option>M</option>
