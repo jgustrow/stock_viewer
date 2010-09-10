@@ -1,0 +1,4 @@
+html {font-family: Arial, Tahoma;}
+body {color: #666; font-size: 11px; margin: 0 auto; width: 980px; }
+
+.chartViewer img { background-color: #eeeeee; border: 1px solid #cccccc; padding: 15px 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -khtml-border-radius: 15px; border-radius: 15px; }
