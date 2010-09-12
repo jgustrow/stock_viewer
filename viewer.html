@@ -16,18 +16,23 @@
 
     $(document).ready(function () {
       //Add the img tag.
-      var height = $('#chartViewer').height();
-      alert("height is " +height);
+      //var height = $('#chartViewer').height();
+      //alert("height is " +height);
 
-      $('#chartViewer').append('<img id="chart" src="' + urlString + '"/>');
+      //$('#chartViewer').append('<img id="chart" src="' + urlString + '"/>');
 
       //register an event handling function to reset the img src attribute
       //when a new ticker is slected.
       $('#tickers').change( function () {
+        $('#chart').fadeOut(600);
+        $('#chart').hide();
         var ticker = $('#tickers option:selected').text();
         var newUrlString = urlString.replace('symb=sprt','symb='+ticker);
         $('#chart').attr('src', newUrlString);
+        $('#chart').fadeIn(600);
       });
+
+
     });
   </script>
 </head>
@@ -40,9 +45,15 @@
       <option>F</option>
     </select>
   </form>
+
   <div id="chartViewer">
+    <img id="chart" src="http://bigcharts.marketwatch.com/charts/big.chart?symb=sprt&ma=6&maval=9&uf=0&lf=2&lf2=4&lf3=0&type=1&size=4&state=8&style=340&time=9&freq=1" />
+  </div>
+
+  <div id="comments">
 
   </div>
+
 
 </body>
 
